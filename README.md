@@ -55,9 +55,17 @@ You only take part twice: when you ask, and if a website wants you to sign in. E
 
 ## Installing it
 
-1. **Download it.** On the [skill's GitHub page](https://github.com/CollectingDaily/claude-market-research), click the green **Code** button, then **Download ZIP**.
-2. **Install it.** Open the Claude app, click **Code**, choose any folder, drag the ZIP into the message box and type: *Install this skill as a personal skill.* Click **Allow** when asked.
-3. **Restart.** Close the Claude app and open it again. Type **/** and look for **market-research** in the list.
+1. **Open the Claude app**, click the **Code** tab, choose **Local** and any folder (such as Documents).
+2. **Paste this** into the message box and press **Return**:
+
+   ```text
+   Install the skill from https://github.com/CollectingDaily/claude-market-research into ~/.claude/skills/claude-market-research
+   ```
+
+3. **Click Allow** when Claude asks to download it.
+4. **Quit the Claude app completely** (⌘ Q) and open it again. Type **/** in the message box and look for **market-research** in the list. If it's there, you're ready.
+
+New to Claude, or setting up a Mac for the first time? The [Collecting Daily page](https://github.com/CollectingDaily) explains everything step by step, including how to update your skills.
 
 The first time you use it, Claude sets up its research helpers and may ask you to start a new session. Do that, then ask again.
 
