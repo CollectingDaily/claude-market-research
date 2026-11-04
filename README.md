@@ -6,6 +6,16 @@
 
 This skill is step 1. It does the research and stops. It never writes the report, never chooses images and never makes a PDF: you do the writing, and the [market-report-layout](https://github.com/CollectingDaily/claude-market-report-layout) skill turns your finished report into the two designed PDFs.
 
+<p align="center">
+  <a href="#what-you-get"><strong>What you get</strong></a> ·
+  <a href="#how-the-research-works"><strong>How the research works</strong></a> ·
+  <a href="#the-sources"><strong>The sources</strong></a> ·
+  <a href="#accounts-you-need"><strong>Accounts you need</strong></a> ·
+  <a href="#installing-it"><strong>Install</strong></a> ·
+  <a href="#using-it"><strong>Use</strong></a> ·
+  <a href="#questions"><strong>Questions</strong></a>
+</p>
+
 ---
 
 ## What you get
@@ -42,13 +52,97 @@ You only take part twice: when you ask, and if a website wants you to sign in. E
 
 ---
 
+## How the research works
+
+The research follows one rule: **a price is only true if the auction house that sold it says so, on its own page.** Everything else follows from that.
+
+<p align="center"><img src="docs/source-trust.svg" alt="What each kind of source is trusted for: auction houses for sold prices; grading and experts for the grade only; press, data and museums for background only; our own articles and blogs never" width="100%"></p>
+
+**1. A plan.** Claude splits the market into 8 to 12 small jobs (the top ten sales, prices by budget, the market's direction, and so on), each with a list of what to find and how much is enough.
+
+**2. Helpers research at the same time.** Each job goes to its own helper, which looks only at the sites on the approved list for your subject (see [The sources](#the-sources)) and saves every page it uses.
+
+**3. Locked pages open in your Chrome.** Some sites only show prices to people who are signed in. Claude opens those in *your* Chrome, where you're already signed in, and saves the page:
+
+<p align="center"><img src="docs/page-ladder.svg" alt="How Claude opens a page: 1 plain read, 2 your Chrome, 3 Claude asks you if a login has lapsed or a check appears, 4 every figure is checked against the saved page" width="100%"></p>
+
+**4. Every figure is checked.** A checking program compares every price and every quote with the saved page, word for word. If it isn't on the page, it comes out.
+
+**5. A second pair of eyes.** A separate reviewer, which did none of the research, reads the finished document against the pages before you get it.
+
+**6. Nothing is decided for you.** When two sources disagree, you get both. When something can't be found, the document says so rather than guess.
+
+---
+
+## The sources
+
+### Used for every subject
+
+| | |
+| --- | --- |
+| 🏛️ **The major auction houses** | Christie's, Sotheby's, Bonhams, Phillips, Heritage Auctions and Julien's. |
+| 🛍️ **Paul Fraser Collectibles** | Our live stock for the subject. Shown as stock for sale, never as an auction result. |
+| 🔎 **Auction search sites** | Invaluable and Barnebys, used only to *find* a sale. The price is then read on the house's own page. |
+| 📰 **The press** | About 35 major titles (Reuters, the BBC, the FT, the New York Times, The Times, Le Monde, El País and others), for background only. A newspaper is never the only proof of a price. |
+
+### By subject
+
+On top of those, each subject has its own approved list. These are the main ones:
+
+| Subject | Where sold prices come from | Also used (never for a price) |
+| --- | --- | --- |
+| 🎨 **Art** | Artcurial, Dorotheum, Ketterer Kunst, Lempertz, Bukowskis, Woolley & Wallis, Lyon & Turnbull, Swann, Doyle, Hindman | Artnet, Artprice, The Art Newspaper, museums such as Tate and the Getty |
+| ✍️ **Autographs and historical documents** | RR Auction, Nate D. Sanders, Alexander Historical, Swann, Freeman's | PSA/DNA, JSA, Beckett, UACC for authenticity |
+| 🪙 **Coins** | Stack's Bowers, Heritage, Spink, Baldwin's, Noonans, GreatCollections, Morton & Eden, Künker, CNG | PCGS and NGC for grades; Coin World |
+| 💥 **Comics** | ComicConnect, ComicLink, Metropolis, Hake's, Goldin | CGC, CBCS and Overstreet for grades; GoCollect |
+| 🎬 **Film, TV and music** | Propstore, Premiere Props, Julien's, RR Auction, Omega, Tracks, Guernsey's | — |
+| 📷 **Photography** | Swann, Forum Auctions, Leitz Photographica | — |
+| 🗳️ **Political** | Hake's, RR Auction, Alexander Historical, Swann, Weiss | — |
+| 📚 **Rare books** | Swann, Forum Auctions, Dominic Winter, Hansons, Lyon & Turnbull | AbeBooks |
+| 👑 **Royal** | Reeman Dansie, Historical & Collectable | — |
+| 🚀 **Space and aviation** | RR Auction, Dominic Winter, C&T Auctioneers | collectSPACE |
+| ⚾ **Sports** | Goldin, SCP, Lelands, Grey Flannel, Memory Lane, Robert Edward Auctions | Sports Collectors Digest |
+| ✉️ **Stamps** | Stanley Gibbons, Spink, David Feldman, Siegel, Corinphila, Grosvenor, H.R. Harmer | Royal Philatelic Society and Philatelic Foundation for authenticity |
+| 🧸 **Toys** | Hake's, Vectis, Morphy, Bertoia, Theriault's, LCG, Goldin | AFA, CAS and UKG for grades |
+| 🃏 **Trading cards** | Goldin, PWCC, Robert Edward Auctions, Memory Lane, Love of the Game | PSA, Beckett, SGC, CGC for grades; Card Ladder |
+| 🍷 **Wine and spirits** | Sotheby's, Christie's, Bonhams, Hart Davis Hart, Zachys, Acker, Whisky Auctioneer | Liv-ex, Wine-Searcher, Decanter |
+
+The full lists, with notes on each site, are in [`references/sources/`](references/sources/).
+
+> [!IMPORTANT]
+> **Never used:**
+>
+> - **Our own articles** (Collecting Daily and JustCollecting). We want the most up-to-date information, and an article is only as current as the day it was published. Every figure is found again, fresh, at its source.
+> - **Blogs that aren't on the approved list.** A random blog is never a source, and never the way to find one. Only blogs from the trusted names on the list count, such as those of the British Museum, the V&A or the Smithsonian, and even then for background only, never for a price.
+
+---
+
+## Accounts you need
+
+Some auction houses hide sold prices until you sign in. **Sign in to these once in Google Chrome and stay signed in**: Claude reads the pages in your Chrome, so it sees the prices you would see. It never sees or types your password.
+
+| Account | Cost | Needed for | Without it |
+| --- | --- | --- | --- |
+| **[Heritage Auctions](https://www.ha.com/)** | Free | ⭐ Every subject | Prices read "Sold For: Sign-in" |
+| **[Sotheby's](https://www.sothebys.com/)** | Free | ⭐ Every subject | Prices read "Log in to view results" |
+| **[Goldin](https://goldin.co/)** | Free | Trading cards, sports, comics, toys | Prices show "$0 Winning Bid" |
+| **[Propstore](https://propstore.com/)** | Free | Film and TV | Sold prices are hidden |
+| **[Vectis](https://www.vectis.co.uk/)** | Free | Toys | Sold prices are hidden |
+| **[Antiques Trade Gazette](https://www.antiquestradegazette.com/)** | Subscription *(optional)* | Art and antiques news | Articles are locked |
+
+⭐ = needed for every report. The others matter only for their subjects.
+
+If a login has run out during a run, or a site shows a "verify you're human" check, Claude stops and tells you which site. Sign in or tick the box in Chrome, tell Claude it's done, and it carries on. Without an account the research still runs, but those prices will be missing from your document.
+
+---
+
 ## What you need
 
 | | |
 | --- | --- |
 | 💻 **A Mac** | The skill uses tools that come with macOS. |
 | 🤖 **The Claude app**, with its **Code** tab | A paid Claude plan (Pro, Max, Team or Enterprise). Download it from [claude.com](https://code.claude.com/docs/en/desktop-quickstart). |
-| 🌐 **Google Chrome** with the **Claude in Chrome** extension | Some auction houses only show prices to people who are signed in. Claude reads those pages in *your* Chrome, where you're already signed in. It never sees or types a password. |
+| 🌐 **Google Chrome** with the **Claude in Chrome** extension | Some auction houses only show prices to people who are signed in. Claude reads those pages in *your* Chrome, where you're already signed in. It never sees or types a password. See [Accounts you need](#accounts-you-need). |
 | 📝 **pandoc** *(optional)* | Makes the Word copy of the document. Without it you get the Markdown file only. |
 
 ---
