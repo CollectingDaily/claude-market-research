@@ -123,7 +123,7 @@ The report written from it carries no citations, no footnote markers and no Sour
 
 A source goes in that field only if you opened it in this session. A URL you have not opened does not exist.
 
-Never cite one of our own articles (`Archive/1 - COLLECTING DAILY`, justcollecting.com, news.justcollecting.com, collectingdaily.com), and never read one: they are used for photographs only (SKILL.md, 13 October 2026).
+Never cite one of our own articles (justcollecting.com, news.justcollecting.com, collectingdaily.com), and never read one: they are used for photographs only (SKILL.md, 13 October 2026).
 
 ## Every price item carries a Basis line
 

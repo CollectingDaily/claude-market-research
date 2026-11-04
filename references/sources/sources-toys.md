@@ -36,11 +36,7 @@ bears.
 
 ## Our own articles
 
-`Archive/1 - COLLECTING DAILY` carries three toy pieces: "10 childhood toys worth
-thousands today", "10 vintage Steiff teddy bears worth thousands today" and "The
-10 most valuable toy bears ever made". Several of their figures are **valuations, not sales** (the Hot
-Wheels Beach Bomb, the PEZ pair, the LEGO Millennium Falcon, the Bearbrick
-ranges). Never put one of those in a ranking of prices realised.
+Our own articles are never sources. Toy articles often quote valuations, not sales: never put a valuation in a ranking of prices realised.
 
 ## Grading (authoritative for a grade, never for a price)
 
